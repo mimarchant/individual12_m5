@@ -66,10 +66,10 @@ fun main() {
         }
 
 
-        var usuario = Usuario(nombre, apellido, edad, correo, sistemaSalud)
-        usuarios.add(usuario)
+        var user = Usuario(nombre, apellido, edad, correo, sistemaSalud)
+        usuarios.add(user)
 
-        for (u in usuarios.sortedBy { it.edad }) {
+        for (u in usuarios.sortedBy { it.age }) {
             println(u)
         }
     }
@@ -81,11 +81,9 @@ fun validarSistema(sistemaSalud: String): Boolean {
             .lowercase() == "Isapre" || sistemaSalud.uppercase().lowercase() == "Particular"
     ) {
         return false
-
     }
     return true
 }
-
 
 fun validarEdad(edad: Int): Boolean {
     return edad in 1..115
@@ -94,16 +92,13 @@ fun validarEdad(edad: Int): Boolean {
 
 fun validarCorreo(correo: String): Boolean {
     return correo.length in 10..200 && correo.contains(Regex("@"))
-    //Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-}
+ }
 
 
 fun validarApellido(apellido: String): Boolean {
     return apellido.length in 1..20 && apellido.all { it.isLetterOrDigit() }
-
 }
 
 fun validarNombre(nombre: String): Boolean {
     return nombre.length in 1..20 && nombre.all { it.isLetterOrDigit() }
-
 }
